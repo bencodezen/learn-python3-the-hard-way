@@ -20,5 +20,13 @@ def index():
   
   return render_template("index.html", greeting=greeting)
 
+@app.route("/form", methods=['POST', 'GET'])
+def form():
+  if request.method == "POST":
+    name = request.form['name']
+    return render_template("index.html", greeting=name)
+  else:
+    return render_template("form.html")
+
 if __name__ == "__main__":
   app.run()
